@@ -22,8 +22,9 @@ class AddNote extends State<StartNotes> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+
         // appbar
-        appBar: AppBar(title: Text('Add a note'), centerTitle: true),
+        appBar: AppBar(title: Text('Notes'), centerTitle: true),
 
         // body
         // PADDING IS A WIDGET EVERYTHING ELSE GOES INSIDE IT!!!!!
@@ -32,7 +33,81 @@ class AddNote extends State<StartNotes> {
           // pad edges by 20p
           padding: EdgeInsets.all(20),
 
+          // container for form
+          child: Container(
 
+            // form
+            child: Form(
+
+              // key
+              key: _formKey,
+
+              child: Column(
+                // align to top left
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                // input field and buttons
+                children: <Widget>[
+
+                  // "add a note" heading
+                  Text(
+                    'Add a note!',
+                    style: TextStyle(
+                        fontSize: 24.0,
+                    ),
+                  ),
+
+                  // input for note
+                  // slight copypasta here also
+                  SizedBox(height: 8),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Your note',
+                    ),
+                    keyboardType: TextInputType.text,
+
+                    // basic validation
+                    validator: (String input) {
+                      if (input == null || input.isEmpty) {
+                        return "Please enter something";
+                      }
+
+                      return null;
+                    },
+                  ),
+
+                  // button that "saves note"
+                  // for now just clears text
+                  SizedBox(height: 8.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+
+                    children: <Widget>[
+                      ElevatedButton(
+                        child: Text('Save'),
+                        onPressed: () {
+                          // slight copypasta here too
+                          // broken for now
+                          /*if (_formKey.currentState.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Saving note.')));
+                          }*/
+
+                          // Clear form
+                          _formKey.currentState.reset();
+                        },
+                      )
+                    ]
+                  )
+
+                ],
+
+              ),
+
+            ),
+
+          ),
 
 
         ),
