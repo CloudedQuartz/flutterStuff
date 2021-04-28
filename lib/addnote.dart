@@ -89,10 +89,16 @@ class AddNote extends State<StartNotes> {
                         onPressed: () {
                           // slight copypasta here too
                           // broken for now
-                          /*if (_formKey.currentState.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text('Saving note.')));
-                          }*/
+                          /*
+                          if (_formKey.currentState.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar
+                            (
+                              const SnackBar(
+                                content: Text('Saving note.')
+                              )
+                            );
+                          }
+                          */
 
                           // Clear form
                           _formKey.currentState.reset();
