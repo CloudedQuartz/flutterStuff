@@ -23,10 +23,7 @@ class Auth extends State<Authenticate> {
                   key: _formKey,
                   child: Column(
 
-
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-
+                    mainAxisAlignment: MainAxisAlignment.start,
 
                     children: <Widget>[
                       Text(
