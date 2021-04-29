@@ -89,7 +89,7 @@ class AddNote extends State<StartNotes> {
                         onPressed: () {
                           // slight copypasta here too
                           // broken for now
-                          /*
+                          ///*
                           if (_formKey.currentState.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar
                             (
@@ -98,7 +98,7 @@ class AddNote extends State<StartNotes> {
                               )
                             );
                           }
-                          */
+                          //*/
 
                           // Clear form
                           _formKey.currentState.reset();
