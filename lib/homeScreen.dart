@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 
 import 'addnote.dart';
+import 'auth.dart';
 
 void homeScreen() {
 
   // run empty homescreen for now
-  runApp(HomeScreen());
+  runApp(HomeScreenRoute());
 
+}
+
+class HomeScreenRoute extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => HomeScreen(),
+        'auth' : (context) => Authenticate(),
+        'notes' : (context) => StartNotes(),
+      },
+    );
+  }
 }
 
 class HomeScreen extends StatelessWidget {
@@ -15,6 +31,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
+
       home: Scaffold(
 
         // title
@@ -37,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                   ElevatedButton(
                     child: Text('Authentication'),
                     onPressed: () {
-
+                      Navigator.pushNamed(context, 'auth');
                     },
                   ),
 
@@ -50,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                     style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 43)),
                     child: Text('Notes'),
                     onPressed: () {
-
+                      Navigator.pushNamed(context, 'notes');
                     },
                   )
                 ],
