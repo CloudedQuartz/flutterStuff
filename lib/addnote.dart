@@ -14,6 +14,13 @@ class AddNote extends State<StartNotes> {
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
 
+  // If a Scaffold.key is specified, the ScaffoldState can be directly
+// accessed without first obtaining it from a BuildContext via
+// Scaffold.of. From the key, use the GlobalKey.currentState
+// getter. This was previously used to manage SnackBars.
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+
   // note user wants to enter
   String userNote;
 
@@ -21,6 +28,7 @@ class AddNote extends State<StartNotes> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: scaffoldMessengerKey,
       home: Scaffold(
 
         // appbar
@@ -91,7 +99,7 @@ class AddNote extends State<StartNotes> {
                           // broken for now
                           ///*
                           if (_formKey.currentState.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar
+                            scaffoldMessengerKey.currentState.showSnackBar
                             (
                               const SnackBar(
                                 content: Text('Saving note.')
