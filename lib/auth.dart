@@ -15,7 +15,7 @@ class Auth extends State<Authenticate> {
     return MaterialApp (
         scaffoldMessengerKey: scaffoldMessengerKey,
         home: Scaffold(
-            appBar: AppBar(title: Text('Authentication')),
+            appBar: AppBar(title: Text('Authentication'), centerTitle: true,),
             body: Padding(
               padding: EdgeInsets.all(20.0),
               child: Container(
@@ -24,12 +24,14 @@ class Auth extends State<Authenticate> {
                   child: Column(
 
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
 
                     children: <Widget>[
                       Text(
-                        'Authentication',
+                        'Authenticate',
                         style: TextStyle(
-                            fontSize: 36.0,
+                            fontSize: 24.0,
                         ),
                       ),
 
