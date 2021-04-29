@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'addnote.dart';
-import 'auth.dart';
+
+import 'homeScreen.dart';
 
 void main() {
-  runApp(StartNotes());
+  homeScreen();
 }
