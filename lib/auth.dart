@@ -30,7 +30,6 @@ class Auth extends State<Authenticate> {
                         'Authentication',
                         style: TextStyle(
                             fontSize: 36.0,
-                            fontWeight: FontWeight.bold
                         ),
                       ),
 
