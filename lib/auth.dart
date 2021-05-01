@@ -93,6 +93,7 @@ class Auth extends State<Authenticate> {
                             onPressed: () async {
                               // First validate form
                               if (_formKey.currentState.validate()) {
+                                _formKey.currentState.save();
 
                                 // log in
                                 try {
@@ -103,11 +104,16 @@ class Auth extends State<Authenticate> {
                                 }
                                 on FirebaseAuthException catch (e) {
                                   scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e.message)));
+                                  return 0;
                                 }
+
+
 
                                 // continue if no exception
                                 scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text('Logging-in user.')));
+                                _formKey.currentState.reset();
                               }
+
                             },
                           ),
 
@@ -118,6 +124,7 @@ class Auth extends State<Authenticate> {
                             onPressed: () async {
                               // first validate form
                               if (_formKey.currentState.validate()) {
+                                _formKey.currentState.save();
                                 try {
                                   UserCredential userCredential = await auth.createUserWithEmailAndPassword(
                                       email: userEmail,
@@ -125,10 +132,12 @@ class Auth extends State<Authenticate> {
                                   );
                                 } on FirebaseAuthException catch (e) {
                                   scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e.message)));
+                                  return 0;
                                 }
 
                                 // Continue
                                 scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text('Registering user.')));
+                                _formKey.currentState.reset();
                               }
                             },
                           ),
