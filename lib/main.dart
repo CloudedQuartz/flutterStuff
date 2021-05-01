@@ -25,7 +25,8 @@ class InitFirebase extends StatelessWidget {
 
         // Check for errors
         if (snapshot.hasError) {
-          return Text('Unable to initialize Firebase');
+          // Use materialapp to avoid "No directionality widget found"
+          return MaterialApp(home: Scaffold(body: Text('Unable to initialize Firebase')));
         }
 
         // Run HomeScreenWrapper() as before
@@ -35,7 +36,8 @@ class InitFirebase extends StatelessWidget {
 
         // Otherwise, show something whilst waiting for initialization to complete
         // TODO: add a loading screen
-        return Text('Loading');
+        // Use materialapp to avoid "No directionality widget found"
+        return MaterialApp(home: Scaffold(body: Text('Loading')));
       },
     );
   }
