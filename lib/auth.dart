@@ -90,7 +90,7 @@ class Auth extends State<Authenticate> {
                         children: <Widget>[
                           ElevatedButton(
                             child: Text('Login'),
-                            onPressed: () {
+                            onPressed: () async {
                               // First validate form
                               if (_formKey.currentState.validate()) {
 
@@ -115,7 +115,7 @@ class Auth extends State<Authenticate> {
                           SizedBox(width: 10.0),
                           ElevatedButton(
                             child: Text('Register'),
-                            onPressed: () {
+                            onPressed: () async {
                               // first validate form
                               if (_formKey.currentState.validate()) {
                                 try {
