@@ -131,7 +131,16 @@ class Auth extends State<Authenticate> {
                                 scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text('Registering user.')));
                               }
                             },
+                          ),
+                          SizedBox(width: 10.0),
+                          ElevatedButton(
+                            child: Text('Logout'),
+                            onPressed: () {
+                              auth.signOut();
+                              scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text('Logging Out.')));
+                            },
                           )
+
                         ],
                       )
                     ],
