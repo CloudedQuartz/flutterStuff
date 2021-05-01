@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class Authenticate extends StatefulWidget {
 class Auth extends State<Authenticate> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+  // Create firebase auth instance
+  final FirebaseAuth auth = FirebaseAuth.instance;
   String userEmail, userPassword;
 
   @override
@@ -53,6 +56,10 @@ class Auth extends State<Authenticate> {
 
                           return null;
                         },
+
+                        onSaved: (String email) {
+                          userEmail = email;
+                        },
                       ),
 
 
@@ -69,6 +76,10 @@ class Auth extends State<Authenticate> {
 
                           return null;
                         },
+
+                        onSaved: (String password) {
+                          userPassword = password;
+                        },
                       ),
 
 
@@ -80,7 +91,21 @@ class Auth extends State<Authenticate> {
                           ElevatedButton(
                             child: Text('Login'),
                             onPressed: () {
+                              // First validate form
                               if (_formKey.currentState.validate()) {
+
+                                // log in
+                                try {
+                                  UserCredential userCredential = await auth.signInWithEmailAndPassword(
+                                      email: userEmail,
+                                      password: userPassword
+                                  );
+                                }
+                                catch (e) {
+                                  scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e)));
+                                }
+
+                                // continue if no exception
                                 scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text('Logging-in user.')));
                               }
                             },
@@ -91,7 +116,19 @@ class Auth extends State<Authenticate> {
                           ElevatedButton(
                             child: Text('Register'),
                             onPressed: () {
+                              // first validate form
                               if (_formKey.currentState.validate()) {
+                                try {
+                                  UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+                                      email: userEmail,
+                                      password: userPassword
+                                  );
+                                }
+                                catch (e) {
+                                  scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e)));
+                                }
+
+                                // Continue
                                 scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text('Registering user.')));
                               }
                             },
