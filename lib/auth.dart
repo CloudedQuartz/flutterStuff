@@ -101,8 +101,8 @@ class Auth extends State<Authenticate> {
                                       password: userPassword
                                   );
                                 }
-                                catch (e) {
-                                  scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e)));
+                                on FirebaseAuthException catch (e) {
+                                  scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e.message)));
                                 }
 
                                 // continue if no exception
@@ -123,9 +123,8 @@ class Auth extends State<Authenticate> {
                                       email: userEmail,
                                       password: userPassword
                                   );
-                                }
-                                catch (e) {
-                                  scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e)));
+                                } on FirebaseAuthException catch (e) {
+                                  scaffoldMessengerKey.currentState.showSnackBar(SnackBar(content: Text(e.message)));
                                 }
 
                                 // Continue
