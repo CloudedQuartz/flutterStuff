@@ -3,14 +3,7 @@ import 'package:flutter/material.dart';
 import 'addnote.dart';
 import 'auth.dart';
 
-void homeScreen() {
-
-  // run empty homescreen for now
-  runApp(HomeScreenRoute());
-
-}
-
-class HomeScreenRoute extends StatelessWidget {
+class HomeScreenWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
